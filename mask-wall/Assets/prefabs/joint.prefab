@@ -45,8 +45,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0015726cfa014e34957765be60e4b92c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Joint
+  linePrefab: {fileID: 3027655965003490747, guid: a69b9ebb8c95e491c9432edf0ccdae9a, type: 3}
   constraintLow: 0
   constraintHigh: 0
+  angleOffset: 0
+  current: 0
+  currentDir: 1
 --- !u!1 &7082815037997741846
 GameObject:
   m_ObjectHideFlags: 0
