@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://b8m8el3iqdxgs"]
+
+[ext_resource type="Texture2D" uid="uid://cj67g7oxaf1kf" path="res://circle.png" id="1_rdwui"]
+
+[node name="thighL" type="Node3D" unique_id=1720172523]
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=1591984951]
+transform = Transform3D(0.08107899, 0, 0, 0, 0.08107899, 0, 0, 0, 1, 0, 0, 0)
+texture = ExtResource("1_rdwui")
