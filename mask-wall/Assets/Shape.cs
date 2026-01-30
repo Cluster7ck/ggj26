@@ -1,8 +1,13 @@
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Shape : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    public List<Transform> Joints = new();
+    public float rotationSpeed;
+    private int currentJoinIdx = 0;
+    
     void Start()
     {
         
@@ -11,6 +16,7 @@ public class Shape : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        var currentJoint = Joints[currentJoinIdx];
+        currentJoint.transform.Rotate(Vector3.forward, 90f * rotationSpeed * Time.deltaTime);
     }
 }
