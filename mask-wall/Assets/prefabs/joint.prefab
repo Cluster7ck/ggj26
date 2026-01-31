@@ -46,9 +46,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Joint
   linePrefab: {fileID: 3027655965003490747, guid: a69b9ebb8c95e491c9432edf0ccdae9a, type: 3}
+  skipLine: 0
   constraintLow: 0
   constraintHigh: 0
-  angleOffset: 0
   current: 0
   currentDir: 1
 --- !u!1 &7082815037997741846
@@ -77,8 +77,8 @@ Transform:
   m_GameObject: {fileID: 7082815037997741846}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0.000000059605, z: 0}
+  m_LocalScale: {x: 0.023075582, y: 0.023075582, z: 0.023075582}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 653180188310085699}
@@ -132,8 +132,8 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Sprite: {fileID: -1767400171, guid: 206454068b9a4411ba82c7133b7e523c, type: 3}
+  m_Color: {r: 0.53333336, g: 0.32941177, b: 0.95686275, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

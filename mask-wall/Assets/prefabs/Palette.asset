@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f13ba1fb3bb7b450fa4accf8f206cfdf, type: 3}
   m_Name: Palette
   m_EditorClassIdentifier: Assembly-CSharp::Palette
-  darkBlue: {r: 0, g: 0, b: 0, a: 0}
-  violet: {r: 0, g: 0, b: 0, a: 0}
-  lightBlue: {r: 0, g: 0, b: 0, a: 0}
-  green: {r: 0, g: 0, b: 0, a: 0}
-  orange: {r: 0, g: 0, b: 0, a: 0}
-  pink: {r: 0, g: 0, b: 0, a: 0}
-  yellow: {r: 0, g: 0, b: 0, a: 0}
-  white: {r: 0, g: 0, b: 0, a: 0}
+  darkBlue: {r: 0, g: 0.03137255, b: 0.44313726, a: 1}
+  violet: {r: 0.53333336, g: 0.32941177, b: 0.9529412, a: 1}
+  lightBlue: {r: 0.3882353, g: 0.60784316, b: 1, a: 1}
+  green: {r: 0.3882353, g: 1, b: 0.7294118, a: 1}
+  orange: {r: 1, g: 0.54901963, b: 0.36078432, a: 1}
+  pink: {r: 1, g: 0.4745098, b: 0.68235296, a: 1}
+  yellow: {r: 1, g: 0.9764706, b: 0.50980395, a: 1}
+  white: {r: 1, g: 1, b: 1, a: 1}
