@@ -61,7 +61,7 @@ public class Wall : MonoBehaviour
   private void OnJointLocked(object ev, Joint joint)
   {
     var rest = transform.position.z - zSteps[currentStep];
-    if (currentStep >= zSteps.Count)
+    if (currentStep == zSteps.Count-1)
     {
       // last step?
       currentSequence = Sequence.Create()

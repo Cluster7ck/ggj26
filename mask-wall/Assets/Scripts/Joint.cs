@@ -11,16 +11,21 @@ public class Joint : MonoBehaviour
   public int currentDir = 1;
   private List<(Joint, LineRenderer)> childJoints = new();
 
-  public void Start()
+  private void Awake()
   {
-    var childJointsC = transform.GetComponentsInChildrenWithoutSelf<Joint>();
-    if (!skipLine)
+    string prefix = $"{name}-";
+    foreach (Transform child in transform)
     {
-      foreach (var childJoint in childJointsC)
+      var line = child.GetComponent<LineRenderer>();
+      if (line == null) continue;
+
+      if (!child.name.StartsWith(prefix)) continue;
+
+      string jointName = child.name.Substring(prefix.Length);
+      var joint = transform.Find(jointName)?.GetComponent<Joint>();
+      if (joint != null)
       {
-        var line = Instantiate(linePrefab, transform);
-        line.positionCount = 2;
-        childJoints.Add((childJoint, line));
+        childJoints.Add((joint, line));
       }
     }
   }

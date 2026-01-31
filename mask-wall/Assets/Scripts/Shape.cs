@@ -1,13 +1,10 @@
 using System;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class Shape : MonoBehaviour
 {
     public List<Joint> Joints = new();
-    public Joint RootJoint;
     public float rotationSpeed;
     private int currentJoinIdx = 0;
     private int currentDir = 1;
@@ -19,17 +16,6 @@ public class Shape : MonoBehaviour
         if (Joints.Count > 0 && currentJoinIdx < Joints.Count)
         {
             Joints[currentJoinIdx].StartRot();
-        }
-    }
-
-    private void DoTheThing(Transform parent)
-    {
-        foreach (Transform child in parent)
-        {
-            var comp = child.GetComponent<Joint>();
-            if (comp != null)
-            {
-            }
         }
     }
 
