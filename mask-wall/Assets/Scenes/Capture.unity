@@ -168,7 +168,7 @@ MonoBehaviour:
   resolution: {x: 1024, y: 512}
   fileName: AlphaCapture.png
   blurRadius: 16
-  whiteThreshold: 0.853
+  whiteThreshold: 0.309
 --- !u!1 &742744728
 GameObject:
   m_ObjectHideFlags: 0
@@ -470,6 +470,7 @@ GameObject:
   - component: {fileID: 1199352074}
   - component: {fileID: 1199352073}
   - component: {fileID: 1199352072}
+  - component: {fileID: 1199352076}
   m_Layer: 6
   m_Name: Person
   m_TagString: Untagged
@@ -565,12 +566,24 @@ Transform:
   m_GameObject: {fileID: 1199352071}
   serializedVersion: 2
   m_LocalRotation: {x: 0.46771613, y: -0.46771613, z: 0.53032225, w: 0.53032225}
-  m_LocalPosition: {x: -3.79, y: 0.09999996, z: 1.129}
+  m_LocalPosition: {x: -3.79, y: 0.09999996, z: -1.929}
   m_LocalScale: {x: 0.22925, y: 0.22925, z: 0.22925}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 82.821, y: 0, z: 90}
+--- !u!114 &1199352076
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1199352071}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86499f4fafcf1e24a92da2a00095fbc7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
 --- !u!1 &1288192865
 GameObject:
   m_ObjectHideFlags: 0
