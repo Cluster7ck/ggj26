@@ -251,6 +251,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2240186945948729246}
   - component: {fileID: 7506513965065702298}
+  - component: {fileID: 2882640068455251618}
   m_Layer: 0
   m_Name: Wall
   m_TagString: Untagged
@@ -293,6 +294,19 @@ MonoBehaviour:
   fileName: AlphaCapture.png
   blurRadius: 16
   whiteThreshold: 0.853
+--- !u!114 &2882640068455251618
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7242192718017837512}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6059531f402343daab8cf9884bdc3c13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Wall
+  meshRenderer: {fileID: 74291993363857187}
 --- !u!1 &7362344709430648660
 GameObject:
   m_ObjectHideFlags: 0

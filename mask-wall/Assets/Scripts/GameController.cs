@@ -20,10 +20,6 @@ public class GameController : MonoBehaviour
         {
             Instance = this;
         }
-    }
-
-    private void Start()
-    {
         if (levels.Length > 0)
         {
             CurrentLevel = levels[0];
@@ -45,6 +41,8 @@ public class GameController : MonoBehaviour
         set
         {
             _currentLevel = value;
+            Debug.Log("changed level " + levels.GetHashCode());
+            _currentLevel.player.SetActive(true); // TODO animate
             OnLevelChange?.Invoke(this, _currentLevel);
             Debug.Log("changed level to index " + index);
         }
