@@ -22,10 +22,11 @@ public class CountPixels : MonoBehaviour
         var allPixels = GetBlackPixels(useMask: false);
         var maskedPixels = GetBlackPixels(useMask: true);
         var ratio = maskedPixels / (float)allPixels;
+        var accuracyPercent = Mathf.Max((int)((1 - ratio) * 100), 0);
 
         if (scoreText != null)
         {
-            scoreText.text = "Accuracy: " + (int)((1 - ratio) * 100) + "%";
+            scoreText.text = "Accuracy: " + accuracyPercent + "%";
         }
     }
 
