@@ -15,6 +15,7 @@ public class CountPixels : MonoBehaviour
     private void Start()
     {
         GameController.Instance.OnLevelChange += OnOnLevelChange;
+        OnOnLevelChange(this, GameController.Instance.CurrentLevel);
 
         scoreText = GetComponentInChildren<TMP_Text>();
     }
