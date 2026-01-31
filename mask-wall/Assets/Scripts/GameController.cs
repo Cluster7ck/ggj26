@@ -7,6 +7,9 @@ public class GameController : MonoBehaviour
     public Level[] levels;
 
     private Level _currentLevel;
+    public float PlayerZ = -2.32f;
+    
+    private Level currentLevel;
 
     public static GameController Instance { get; private set; }
 
