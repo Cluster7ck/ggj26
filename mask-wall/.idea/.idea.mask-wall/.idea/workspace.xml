@@ -5,12 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ca99eaeb-bdd5-4d5c-9ecd-217263fa40fb" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Wall.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Wall.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.mask-wall/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.mask-wall/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/GameScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/GameScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SweatEffect.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/SweatEffect.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ScriptableObject/Levels.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ScriptableObject/Levels.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Wall.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Wall.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.probuilder/Settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.probuilder/Settings.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,8 +19,9 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Assets/ScriptableObject/Level.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Editor/CaptureHoleTextureEditor.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///Users/gjzi/proj/mask-wall/mask-wall/Assets/Scripts/GameController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/gjzi/proj/mask-wall/mask-wall/Assets/Scripts/GameController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Palette.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/SweatEffect.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@b9d1dd437cb9/Runtime/TMP/TMP_Text.cs" root0="SKIP_HIGHLIGHTING" />
