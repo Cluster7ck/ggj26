@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 
@@ -13,8 +14,20 @@ public class CountPixels : MonoBehaviour
 
     private void Start()
     {
+        GameController.Instance.OnLevelChange += OnOnLevelChange;
+
         scoreText = GetComponentInChildren<TMP_Text>();
+    }
+
+    private void OnOnLevelChange(object sender, Level e)
+    {
+        maskTex = e.wallTexture;
         StoreMask();
+    }
+
+    private void OnDestroy()
+    {
+        GameController.Instance.OnLevelChange -= OnOnLevelChange;
     }
 
     void Update()
@@ -59,7 +72,7 @@ public class CountPixels : MonoBehaviour
         RenderTexture.ReleaseTemporary(rtMaskSmall);
 
 // Now you can access the mask pixels safely
-       maskPixels = maskSmall.GetPixels(); // use maskPixels[i].r for black/white check
+        maskPixels = maskSmall.GetPixels(); // use maskPixels[i].r for black/white check
     }
 
     int CountBlackPixels(bool useMask)

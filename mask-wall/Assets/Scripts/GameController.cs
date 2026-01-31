@@ -20,7 +20,10 @@ public class GameController : MonoBehaviour
         {
             Instance = this;
         }
+    }
 
+    private void Start()
+    {
         if (levels.Length > 0)
         {
             CurrentLevel = levels[0];
