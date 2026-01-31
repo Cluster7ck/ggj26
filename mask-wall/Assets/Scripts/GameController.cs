@@ -5,11 +5,18 @@ using UnityEngine;
 public class GameController : MonoBehaviour
 {
     public Level[] levels;
-    
-    private Level currentLevel;
 
-    private void Start()
+    private Level _currentLevel;
+
+    public static GameController Instance { get; private set; }
+
+    private void Awake()
     {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+
         if (levels.Length > 0)
         {
             CurrentLevel = levels[0];
@@ -18,11 +25,11 @@ public class GameController : MonoBehaviour
 
     public Level CurrentLevel
     {
-        get => currentLevel;
+        get => _currentLevel;
         set
         {
-            currentLevel = value;
-            OnLevelChange?.Invoke(this, currentLevel);
+            _currentLevel = value;
+            OnLevelChange?.Invoke(this, _currentLevel);
         }
     }
 
