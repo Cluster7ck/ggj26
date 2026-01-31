@@ -9,8 +9,7 @@ public class SweatEffect : MonoBehaviour
   [FormerlySerializedAs("duration")] public float moveDuration;
   [FormerlySerializedAs("duration")] public float scaleDuration;
 
-  // Start is called once before the first execution of Update after the MonoBehaviour is created
-  void Start()
+  public void Trigger()
   {
     Sequence.Create(
         Tween.PositionY(transform, transform.position.y - distance, moveDuration)

@@ -122,6 +122,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1699922398953977168}
+  - {fileID: 5940016213030305880}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5706997313833674777
@@ -1002,6 +1003,68 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0015726cfa014e34957765be60e4b92c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Joint
+--- !u!1001 &5819493248789153218
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 6810823270141600446}
+    m_Modifications:
+    - target: {fileID: 193042359949657498, guid: 10aa9defaca9246c0adedb9b507797be, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.115
+      objectReference: {fileID: 0}
+    - target: {fileID: 193042359949657498, guid: 10aa9defaca9246c0adedb9b507797be, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.318
+      objectReference: {fileID: 0}
+    - target: {fileID: 193042359949657498, guid: 10aa9defaca9246c0adedb9b507797be, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.18
+      objectReference: {fileID: 0}
+    - target: {fileID: 193042359949657498, guid: 10aa9defaca9246c0adedb9b507797be, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 193042359949657498, guid: 10aa9defaca9246c0adedb9b507797be, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 193042359949657498, guid: 10aa9defaca9246c0adedb9b507797be, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 193042359949657498, guid: 10aa9defaca9246c0adedb9b507797be, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 193042359949657498, guid: 10aa9defaca9246c0adedb9b507797be, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 193042359949657498, guid: 10aa9defaca9246c0adedb9b507797be, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 193042359949657498, guid: 10aa9defaca9246c0adedb9b507797be, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9107966458352827701, guid: 10aa9defaca9246c0adedb9b507797be, type: 3}
+      propertyPath: m_Name
+      value: SweatEffect
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 10aa9defaca9246c0adedb9b507797be, type: 3}
+--- !u!4 &5940016213030305880 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 193042359949657498, guid: 10aa9defaca9246c0adedb9b507797be, type: 3}
+  m_PrefabInstance: {fileID: 5819493248789153218}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6244882534240007488
 PrefabInstance:
   m_ObjectHideFlags: 0

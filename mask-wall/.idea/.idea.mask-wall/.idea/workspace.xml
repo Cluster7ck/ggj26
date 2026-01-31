@@ -5,19 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ca99eaeb-bdd5-4d5c-9ecd-217263fa40fb" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.mask-wall/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.mask-wall/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/Floor.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Materials/Floor.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/Wall.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Materials/Wall.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/GameScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/GameScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Joint.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Joint.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Textures/square.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Textures/square.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/prefabs/LineRenderer.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/prefabs/LineRenderer.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/prefabs/LineRenderer.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/prefabs/LineRenderer.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/prefabs/Palette.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/prefabs/Palette.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/SweatEffect.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/SweatEffect.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/prefabs/char.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/prefabs/char.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/prefabs/joint.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/prefabs/joint.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.probuilder/Settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.probuilder/Settings.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
