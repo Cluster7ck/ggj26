@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Wall : MonoBehaviour
 {
-  private static readonly int baseTextureName = Shader.PropertyToID("Base");
+  private static readonly int baseTextureName = Shader.PropertyToID("_Base");
   private float initialZ;
   private List<float> zSteps = new();
   private int currentStep = 0;
