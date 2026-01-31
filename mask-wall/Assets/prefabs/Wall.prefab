@@ -293,7 +293,7 @@ MonoBehaviour:
   resolution: {x: 1024, y: 512}
   fileName: AlphaCapture.png
   blurRadius: 16
-  whiteThreshold: 0.853
+  whiteThreshold: 0.3
 --- !u!114 &2882640068455251618
 MonoBehaviour:
   m_ObjectHideFlags: 0

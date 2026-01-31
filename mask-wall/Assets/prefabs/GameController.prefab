@@ -45,9 +45,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameController
   levels:
+  - wallTexture: {fileID: 2800000, guid: 5a0a16f924d6d5f4583291f0ebbd3d3b, type: 3}
+    player: {fileID: 0}
   - wallTexture: {fileID: 2800000, guid: e4d563c042f3b48488970fb5188af6ce, type: 3}
-    player: {fileID: 0}
-  - wallTexture: {fileID: 2800000, guid: 9e42f25900779bd41b8de0927fd72fef, type: 3}
-    player: {fileID: 0}
-  - wallTexture: {fileID: 2800000, guid: 49167da006e550e4f994db7d8862e23b, type: 3}
-    player: {fileID: 0}
+    player: {fileID: 4377223954835930227, guid: 4c79a35037636423bb2951d170e2bbb1, type: 3}
+  - wallTexture: {fileID: 2800000, guid: 0fdcb0b587c08d44190f6f8be8343f38, type: 3}
+    player: {fileID: 4377223954835930227, guid: 4c79a35037636423bb2951d170e2bbb1, type: 3}
+  PlayerZ: -2.32
