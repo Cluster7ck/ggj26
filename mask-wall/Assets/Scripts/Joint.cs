@@ -1,8 +1,11 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Joint : MonoBehaviour
 {
+  public GameObject effectParent;
+  public List<LockInEffect> effects = new();
   public LineRenderer linePrefab;
   public bool skipLine;
   public float constraintLow;
@@ -28,6 +31,27 @@ public class Joint : MonoBehaviour
         childJoints.Add((joint, line));
       }
     }
+
+    //effects = effectParent.GetComponentsInChildren<LockInEffect>().ToList();
+  }
+
+  public void SpawnEffect()
+  {
+    //var target = transform.GetComponentInChildrenWithoutSelf<Joint>();
+    //var dirToPrev = transform.parent.position - transform.position;
+    //var dirToNext = target.transform.position - transform.position;
+
+    //var angle1 = Vector3.Angle(dirToPrev, dirToNext);
+    //var angle2 = Vector3.Angle(dirToNext, dirToPrev);
+    //var rotNorm = Quaternion.AngleAxis(angle1 / 2, Vector3.forward);
+    //Debug.Log("A1: "+angle1+", A2: "+angle2);
+    //Debug.DrawRay(transform.position, rotNorm * dirToNext, Color.magenta, 10f);
+    //Debug.DrawRay(transform.position, rotNorm * dirToPrev, Color.green, 10f);
+    effects = effectParent.GetComponentsInChildren<LockInEffect>(true).ToList();
+    if (effects.Count == 0) return;
+    var randEffect = effects[Random.Range(0, effects.Count)];
+    //Instantiate(randEffect, transform.position + new Vector3())
+    randEffect.gameObject.SetActive(true);
   }
 
   private void Update()

@@ -24,6 +24,7 @@ public class Shape : MonoBehaviour
     {
         if (Input.anyKeyDown && currentJoinIdx < Joints.Count)
         {
+            Joints[currentJoinIdx].SpawnEffect();
             OnJointLocked?.Invoke(this, Joints[currentJoinIdx]);
 
             currentJoinIdx++;
