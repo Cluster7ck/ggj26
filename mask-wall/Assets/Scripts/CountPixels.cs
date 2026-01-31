@@ -5,16 +5,17 @@ public class CountPixels : MonoBehaviour
 {
     public ComputeShader shader;
     public RenderTexture texA;
-    public Texture maskTex; // optional
-    public TMP_Text scoreText;
-
-    ComputeBuffer resultBuffer;
-    int kernel;
+    public Texture maskTex;
+    
+    private TMP_Text scoreText;
+    private ComputeBuffer resultBuffer;
+    private int kernel;
 
     void Start()
     {
         kernel = shader.FindKernel("CountPixels");
         resultBuffer = new ComputeBuffer(1, sizeof(uint));
+        scoreText = GetComponentInChildren<TMP_Text>();
     }
 
     void Update()
