@@ -30,10 +30,11 @@ public class Wall : MonoBehaviour
     transform.position = new Vector3(transform.position.x, transform.position.y, initialZ);
     var shape = level.player.GetComponent<Shape>();
     zSteps.Clear();
-    //var dist = initialZ vw
-    for (int i = 0; i < shape.Joints.Count; i++)
+    var dist = Mathf.Abs(initialZ - GameController.Instance.PlayerZ);
+    var step = dist / shape.Joints.Count;
+    for (int i = 1; i <= shape.Joints.Count; i++)
     {
+      zSteps.Add(initialZ + step * i);
     }
-    
   }
 }

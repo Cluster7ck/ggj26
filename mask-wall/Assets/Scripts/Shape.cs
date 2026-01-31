@@ -11,6 +11,8 @@ public class Shape : MonoBehaviour
     public float rotationSpeed;
     private int currentJoinIdx = 0;
     private int currentDir = 1;
+
+    public event EventHandler<Joint> OnJointLocked;
     
     void Start()
     {
@@ -34,8 +36,10 @@ public class Shape : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.anyKeyDown && currentJoinIdx < Joints.Count)
         {
+            OnJointLocked?.Invoke(this, Joints[currentJoinIdx]);
+
             currentJoinIdx++;
             if (Joints.Count > 0 && currentJoinIdx < Joints.Count)
             {
