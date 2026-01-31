@@ -7,6 +7,7 @@ public class GameController : MonoBehaviour
     public Level[] levels;
 
     private Level _currentLevel;
+    private int index = 0;
 
     public static GameController Instance { get; private set; }
 
@@ -23,6 +24,15 @@ public class GameController : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyUp(KeyCode.Q))
+        {
+            index = (index + 1) % levels.Length;
+            CurrentLevel = levels[index];
+        }
+    }
+
     public Level CurrentLevel
     {
         get => _currentLevel;
@@ -30,6 +40,7 @@ public class GameController : MonoBehaviour
         {
             _currentLevel = value;
             OnLevelChange?.Invoke(this, _currentLevel);
+            Debug.Log("changed level to index " + index);
         }
     }
 
