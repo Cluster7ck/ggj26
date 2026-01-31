@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 [ExecuteInEditMode]
 public class GameController : MonoBehaviour
@@ -8,11 +9,15 @@ public class GameController : MonoBehaviour
 
     private Level _currentLevel;
     public float PlayerZ = -2.32f;
-    
+
     private Level currentLevel;
     private int index = 0;
 
     public static GameController Instance { get; private set; }
+
+    public Shape Shape => Object.FindFirstObjectByType<Shape>();
+
+    public Score Score => Object.FindFirstObjectByType<Score>();
 
     private void Awake()
     {
@@ -20,6 +25,7 @@ public class GameController : MonoBehaviour
         {
             Instance = this;
         }
+
         if (levels.Length > 0)
         {
             CurrentLevel = levels[0];

@@ -2,7 +2,7 @@ using System;
 using TMPro;
 using UnityEngine;
 
-public class CountPixels : MonoBehaviour
+public class Score : MonoBehaviour
 {
     [Header("Textures")] public RenderTexture texA; // Source texture
     public Texture2D maskTex; // Optional black/white mask (0 = ignore)
@@ -11,6 +11,9 @@ public class CountPixels : MonoBehaviour
 
     private TMP_Text scoreText;
     private Color[] maskPixels;
+    private float accuracyPercent = 0f;
+
+    public event EventHandler<int> OnScoreChanged;
 
     private void Start()
     {
@@ -22,26 +25,42 @@ public class CountPixels : MonoBehaviour
 
     private void OnOnLevelChange(object sender, Level e)
     {
+        GameController.Instance.Shape.OnJointLocked -= ShapeOnOnJointLocked;
+        GameController.Instance.Shape.OnJointLocked += ShapeOnOnJointLocked;
+
         maskTex = e.wallTexture;
         StoreMask();
+        CalculateAccuracy();
     }
 
-    private void OnDestroy()
+    private void ShapeOnOnJointLocked(object sender, Joint e)
     {
-        GameController.Instance.OnLevelChange -= OnOnLevelChange;
+        CalculateAccuracy();
     }
 
-    void Update()
+    private void CalculateAccuracy()
     {
         var allPixels = CountBlackPixels(useMask: false);
         var maskedPixels = CountBlackPixels(useMask: true);
         var ratio = maskedPixels / (float)allPixels;
-        var accuracyPercent = Mathf.Max((int)((1 - ratio) * 100), 0);
+        var oldAccuracyPercent = accuracyPercent;
+        var newAccuracyPercent = Mathf.Max((int)((1 - ratio) * 100), 0);
+
+        // TODO: Tween
+        accuracyPercent = newAccuracyPercent;
 
         if (scoreText != null)
         {
             scoreText.text = "Accuracy: " + accuracyPercent + "%";
         }
+
+        OnScoreChanged?.Invoke(this, newAccuracyPercent);
+    }
+
+    private void OnDestroy()
+    {
+        GameController.Instance.OnLevelChange -= OnOnLevelChange;
+        GameController.Instance.Shape.OnJointLocked -= ShapeOnOnJointLocked;
     }
 
     void StoreMask()
