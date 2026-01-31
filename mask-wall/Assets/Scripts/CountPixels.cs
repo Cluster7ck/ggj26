@@ -38,9 +38,9 @@ public class CountPixels : MonoBehaviour
 
         shader.SetTexture(kernel, "TexA", texA);
 
+        shader.SetTexture(kernel, "MaskTex", maskTex);
         if (maskTex != null && useMask)
         {
-            shader.SetTexture(kernel, "MaskTex", maskTex);
             shader.SetInt("UseMask", 1);
         }
         else
