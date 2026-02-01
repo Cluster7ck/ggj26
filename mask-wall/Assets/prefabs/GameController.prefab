@@ -47,8 +47,26 @@ MonoBehaviour:
   levels:
   - wallTexture: {fileID: 2800000, guid: 5a0a16f924d6d5f4583291f0ebbd3d3b, type: 3}
     player: {fileID: 0}
-  - wallTexture: {fileID: 2800000, guid: e4d563c042f3b48488970fb5188af6ce, type: 3}
+  - wallTexture: {fileID: 2800000, guid: 5c55c1aaac313a24dacba1d5061638b4, type: 3}
     player: {fileID: 4377223954835930227, guid: 4c79a35037636423bb2951d170e2bbb1, type: 3}
-  - wallTexture: {fileID: 2800000, guid: 0fdcb0b587c08d44190f6f8be8343f38, type: 3}
+  - wallTexture: {fileID: 2800000, guid: 8d422c27a73b1ba408ae003e29ea25ec, type: 3}
     player: {fileID: 4377223954835930227, guid: 4c79a35037636423bb2951d170e2bbb1, type: 3}
+  - wallTexture: {fileID: 2800000, guid: 04aa8b5550af2c3438d12547aa69535e, type: 3}
+    player: {fileID: 4377223954835930227, guid: 4c79a35037636423bb2951d170e2bbb1, type: 3}
+  - wallTexture: {fileID: 2800000, guid: baf13c2b78477f44196461ba0af7977b, type: 3}
+    player: {fileID: 4377223954835930227, guid: 4c79a35037636423bb2951d170e2bbb1, type: 3}
+  - wallTexture: {fileID: 2800000, guid: 9aad5d3c582c8534284c8c355ceacf56, type: 3}
+    player: {fileID: 4377223954835930227, guid: 4c79a35037636423bb2951d170e2bbb1, type: 3}
+  - wallTexture: {fileID: 2800000, guid: c5fd90c7c4042d54d83ac30479187029, type: 3}
+    player: {fileID: 4377223954835930227, guid: 4c79a35037636423bb2951d170e2bbb1, type: 3}
+  - wallTexture: {fileID: 2800000, guid: 5bf5e5e95d999b2488a2b81b6cca5515, type: 3}
+    player: {fileID: 4377223954835930227, guid: 4c79a35037636423bb2951d170e2bbb1, type: 3}
+  - wallTexture: {fileID: 2800000, guid: b3281242a31d02b409905f670756b6a2, type: 3}
+    player: {fileID: 4377223954835930227, guid: 4c79a35037636423bb2951d170e2bbb1, type: 3}
+  - wallTexture: {fileID: 2800000, guid: fde01a73fd4cf71469cc99badff192fd, type: 3}
+    player: {fileID: 4377223954835930227, guid: 4c79a35037636423bb2951d170e2bbb1, type: 3}
+  wall: {fileID: 0}
   PlayerZ: -2.32
+  InputAllowed: 0
+  Shape: {fileID: 0}
+  Score: {fileID: 0}
