@@ -6,15 +6,14 @@
   <component name="ChangeListManager">
     <list default="true" id="ca99eaeb-bdd5-4d5c-9ecd-217263fa40fb" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.mask-wall/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.mask-wall/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/GameScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/GameScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/PerformanceTestRunInfo.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/PerformanceTestRunInfo.json.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/PerformanceTestRunSettings.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/PerformanceTestRunSettings.json.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Score.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Score.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Shape.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Shape.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SoundController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SoundController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Textures/ui/success.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Textures/ui/success.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Textures/ui/tryagain.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Textures/ui/tryagain.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/prefabs/Score.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/prefabs/Score.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/prefabs/SoundController.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/prefabs/SoundController.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/UnityConnectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/UnityConnectSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,6 +43,8 @@
     <setting file="mock:///Users/gjzi/proj/mask-wall/mask-wall/Assets/Scripts/GameController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Users/gjzi/proj/mask-wall/mask-wall/Assets/Scripts/GameController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Palette.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///Users/gjzi/proj/mask-wall/mask-wall/Assets/Scripts/Shape.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/gjzi/proj/mask-wall/mask-wall/Assets/Scripts/Shape.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Users/gjzi/proj/mask-wall/mask-wall/Assets/Scripts/Wall.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Users/gjzi/proj/mask-wall/mask-wall/Assets/Scripts/Wall.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Users/gjzi/proj/mask-wall/mask-wall/Assets/Scripts/Wall.cs" root0="SKIP_HIGHLIGHTING" />

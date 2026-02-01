@@ -39,16 +39,20 @@ public class GameController : MonoBehaviour
       Instance = this;
     }
 
-    startTween = Tween.Scale(pressAnyKeyRect, 0.95f, 1, cycleMode: CycleMode.Yoyo, cycles: -1)
-      .OnComplete(() => pressAnyKeyRect.gameObject.SetActive(false));
+    startTween = Tween.Scale(pressAnyKeyRect, 0.95f, 1, cycleMode: CycleMode.Yoyo, cycles: -1);
   }
 
   private void Update()
   {
+    if (Input.GetKeyDown(KeyCode.Escape))
+    {
+      Application.Quit();
+    }
+    
     if (isStarting && Input.anyKeyDown)
     {
       isStarting = false;
-      startTween.Stop();
+      pressAnyKeyRect.gameObject.SetActive(false);
       Tween.UIAnchoredPositionX(pressAnyKeyRect, 2048, 1).OnComplete(() =>
       {
         if (levels.Length > 0)
@@ -80,7 +84,7 @@ public class GameController : MonoBehaviour
     {
       if (reset)
       {
-        tryAgainRect.anchoredPosition = new(-2048, tryAgainRect.anchoredPosition.y);
+        tryAgainRect.anchoredPosition = new(-3000, tryAgainRect.anchoredPosition.y);
         tryAgainRect.gameObject.SetActive(true);
         var text = tryAgainRect.GetComponentInChildren<TMP_Text>();
         yield return Sequence.Create()
@@ -92,7 +96,7 @@ public class GameController : MonoBehaviour
               text.text = $"{Mathf.RoundToInt(f)}%";
             }, Ease.OutBack))
            )
-          .Chain(Tween.UIAnchoredPositionX(tryAgainRect, 2048, 1))
+          .Chain(Tween.UIAnchoredPositionX(tryAgainRect, 3000, 1))
           .OnComplete(() =>
           {
             tryAgainRect.gameObject.SetActive(false);
@@ -111,7 +115,7 @@ public class GameController : MonoBehaviour
       else
       {
         var playerOffScreen = currentLevel.player.transform.position.z + 10f;
-        successRect.anchoredPosition = new(-2048, successRect.anchoredPosition.y);
+        successRect.anchoredPosition = new(-3000, successRect.anchoredPosition.y);
         successRect.gameObject.SetActive(true);
         var text = successRect.GetComponentInChildren<TMP_Text>();
         yield return Sequence.Create()
@@ -125,7 +129,7 @@ public class GameController : MonoBehaviour
                 text.text = $"{Mathf.RoundToInt(f)}%";
               }))
             )
-            .Chain(Tween.UIAnchoredPositionX(successRect, 2048, 1))
+            .Chain(Tween.UIAnchoredPositionX(successRect, 3000, 1))
           )
           .OnComplete(() =>
           {
