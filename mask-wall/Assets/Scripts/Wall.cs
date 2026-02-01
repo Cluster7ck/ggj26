@@ -49,8 +49,6 @@ public class Wall : MonoBehaviour
       zSteps.Add(initialZ - currentStepSize * i);
     }
 
-    OnJointLocked(this, currenShape.Joints[0]);
-
     currenShape.OnJointLocked += OnJointLocked;
   }
 
@@ -71,19 +69,17 @@ public class Wall : MonoBehaviour
 
   private void OnJointLocked(object ev, Joint joint)
   {
-    var rest = transform.position.z - zSteps[currentStep];
     if (currentStep == zSteps.Count - 1)
     {
-      // last step?
       currentSequence = Sequence.Create()
-        .Chain(Tween.PositionZ(transform, zSteps[currentStep], rest.remap(0, currentStepSize, 0, 3)))
+        .Chain(Tween.ShakeLocalPosition(transform, Vector3.one * 0.1f, 1))
+        .Chain(Tween.PositionZ(transform, zSteps[currentStep] - 3, 1f))
         .OnComplete(() => { GameController.Instance.NextLevel(); });
     }
     else
     {
       currentSequence = Sequence.Create()
-        .Chain(Tween.PositionZ(transform, zSteps[currentStep], rest.remap(0, currentStepSize, 0, 1)))
-        .Chain(Tween.PositionZ(transform, zSteps[currentStep + 1], 1f, Ease.OutCirc));
+        .Chain(Tween.PositionZ(transform, zSteps[currentStep], 1f));
 
       currentStep++;
     }
