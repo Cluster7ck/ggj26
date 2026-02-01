@@ -168,6 +168,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3974950226991045434, guid: b68860f1d19dbd44288fbb8a375a4d8f, type: 3}
+      propertyPath: wall
+      value: 
+      objectReference: {fileID: 1805031605}
+    - target: {fileID: 3974950226991045434, guid: b68860f1d19dbd44288fbb8a375a4d8f, type: 3}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
@@ -1821,6 +1825,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1805031605 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2882640068455251618, guid: 73c4253e8d26548a18abc5b1e07a8c48, type: 3}
+  m_PrefabInstance: {fileID: 719378885}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6059531f402343daab8cf9884bdc3c13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Wall
 --- !u!1 &1978975319
 GameObject:
   m_ObjectHideFlags: 0

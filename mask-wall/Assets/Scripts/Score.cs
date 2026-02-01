@@ -25,8 +25,9 @@ public class Score : MonoBehaviour
 
     private void OnOnLevelChange(object sender, Level e)
     {
-        GameController.Instance.Shape.OnJointLocked -= ShapeOnOnJointLocked;
-        GameController.Instance.Shape.OnJointLocked += ShapeOnOnJointLocked;
+        var shape = e.player.GetComponent<Shape>();
+        shape.OnJointLocked -= ShapeOnOnJointLocked;
+        shape.OnJointLocked += ShapeOnOnJointLocked;
 
         maskTex = e.wallTexture;
         StoreMask();
@@ -38,15 +39,13 @@ public class Score : MonoBehaviour
         CalculateAccuracy();
     }
 
-    private void CalculateAccuracy()
+    public int CalculateAccuracy()
     {
         var allPixels = CountBlackPixels(useMask: false);
         var maskedPixels = CountBlackPixels(useMask: true);
         var ratio = maskedPixels / (float)allPixels;
-        var oldAccuracyPercent = accuracyPercent;
         var newAccuracyPercent = Mathf.Max((int)((1 - ratio) * 100), 0);
 
-        // TODO: Tween
         accuracyPercent = newAccuracyPercent;
 
         if (scoreText != null)
@@ -55,6 +54,7 @@ public class Score : MonoBehaviour
         }
 
         OnScoreChanged?.Invoke(this, newAccuracyPercent);
+        return newAccuracyPercent;
     }
 
     private void OnDestroy()

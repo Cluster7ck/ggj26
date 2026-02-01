@@ -11,7 +11,6 @@ public class GameController : MonoBehaviour
 {
   public Level[] levels;
   public Wall wall;
-  public CountPixels countPixels;
 
   public float PlayerZ = -2.32f;
   public bool InputAllowed;
@@ -22,12 +21,13 @@ public class GameController : MonoBehaviour
 
   public static GameController Instance { get; private set; }
   
-  public Shape Shape => Object.FindFirstObjectByType<Shape>();
+  public Shape Shape;
 
-  public Score Score => Object.FindFirstObjectByType<Score>();
+  public Score Score;
 
   private void Awake()
   {
+    Score = Object.FindFirstObjectByType<Score>();
     if (Instance == null)
     {
       Instance = this;
@@ -56,9 +56,11 @@ public class GameController : MonoBehaviour
     {
       StopCoroutine(currentSetLevelCoro);
     }
-    
 
-    currentSetLevelCoro = StartCoroutine(SetLevel(levels[(currentLevelIndex + 1) % levels.Length], true));
+    var reset = Score.CalculateAccuracy() < 40;
+    var nextLevel = reset ? currentLevel : levels[(currentLevelIndex + 1) % levels.Length];
+
+    currentSetLevelCoro = StartCoroutine(SetLevel(nextLevel, reset));
   }
 
   private IEnumerator SetLevel(Level level, bool reset)
@@ -78,9 +80,10 @@ public class GameController : MonoBehaviour
         var playerOffScreen = currentLevel.player.transform.position.z + 10f;
         yield return Sequence.Create()
           .Chain(Tween.PositionZ(currentLevel.player.transform, playerOffScreen, 3f))
-          .Chain(Tween.ShakeLocalPosition(currentLevel.player.transform, new Vector3(0.5f, 0.5f, 0), 2f))
+          .Chain(Tween.ShakeLocalPosition(currentLevel.player.transform, new Vector3(0.4f, 0.4f, 0), 2f))
           .Chain(Tween.PositionZ(currentLevel.player.transform, playerOffScreen + 20f, 3f))
           .ToYieldInstruction();
+        currentLevel.player.gameObject.SetActive(false);
       }
     }
 
@@ -91,7 +94,7 @@ public class GameController : MonoBehaviour
 
     yield return Sequence.Create()
       .Group(Tween.PositionZ(currentLevel.player.transform, targetPos, 2f))
-      .Group(wall.AnimateReset(level))
+      .Group(wall.AnimateToNext(level))
       .ToYieldInstruction();
 
     OnLevelChange?.Invoke(this, currentLevel);

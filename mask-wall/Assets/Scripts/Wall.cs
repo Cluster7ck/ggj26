@@ -54,7 +54,7 @@ public class Wall : MonoBehaviour
     currenShape.OnJointLocked += OnJointLocked;
   }
 
-  public Sequence AnimateReset(Level level)
+  public Sequence AnimateToNext(Level level)
   {
     return Sequence.Create()
       .Chain(Tween.PositionZ(this.transform, initialZ + 20f, 2f).OnComplete(() =>
@@ -62,6 +62,11 @@ public class Wall : MonoBehaviour
         meshRenderer.material.SetTexture(baseTextureName, level.wallTexture);
       }))
       .Chain(Tween.PositionZ(this.transform, initialZ, 2f));
+  }
+  
+  public Tween AnimateToReset(Level level)
+  {
+    return Tween.PositionZ(this.transform, initialZ, 2f);
   }
 
   private void OnJointLocked(object ev, Joint joint)
