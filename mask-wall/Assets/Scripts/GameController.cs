@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Numerics;
 using PrimeTween;
+using TMPro;
 using UnityEngine;
 using Vector3 = UnityEngine.Vector3;
 using Object = UnityEngine.Object;
@@ -14,10 +15,15 @@ public class GameController : MonoBehaviour
 
   public float PlayerZ = -2.32f;
   public bool InputAllowed;
+  public RectTransform pressAnyKeyRect;
+  public RectTransform successRect;
+  public RectTransform tryAgainRect;
 
   private Level currentLevel;
   private int currentLevelIndex = 0;
   private Coroutine currentSetLevelCoro;
+  private bool isStarting = true;
+  private Tween startTween;
 
   public static GameController Instance { get; private set; }
 
@@ -32,21 +38,24 @@ public class GameController : MonoBehaviour
     {
       Instance = this;
     }
-  }
 
-  private void Start()
-  {
-    if (levels.Length > 0)
-    {
-      StartCoroutine(SetLevel(levels[0], false));
-    }
+    startTween = Tween.Scale(pressAnyKeyRect, 0.95f, 1, cycleMode: CycleMode.Yoyo, cycles: -1)
+      .OnComplete(() => pressAnyKeyRect.gameObject.SetActive(false));
   }
 
   private void Update()
   {
-    if (Input.GetKeyDown(KeyCode.Q))
+    if (isStarting && Input.anyKeyDown)
     {
-      NextLevel();
+      isStarting = false;
+      startTween.Stop();
+      Tween.UIAnchoredPositionX(pressAnyKeyRect, 2048, 1).OnComplete(() =>
+      {
+        if (levels.Length > 0)
+        {
+          StartCoroutine(SetLevel(levels[0], 0, false));
+        }
+      });
     }
   }
 
@@ -57,20 +66,40 @@ public class GameController : MonoBehaviour
       StopCoroutine(currentSetLevelCoro);
     }
 
-    var reset = Score.CalculateAccuracy() < 40;
+    var accuracy = Score.CalculateAccuracy();
+    var reset = accuracy  < 40;
     var nextLevel = reset ? currentLevel : levels[(currentLevelIndex + 1) % levels.Length];
 
-    currentSetLevelCoro = StartCoroutine(SetLevel(nextLevel, reset));
+    currentSetLevelCoro = StartCoroutine(SetLevel(nextLevel, accuracy, reset));
   }
 
-  private IEnumerator SetLevel(Level level, bool reset)
+  private IEnumerator SetLevel(Level level, int accuracy, bool reset)
   {
     InputAllowed = false;
     if (currentLevel != null)
     {
       if (reset)
       {
-        Debug.Log("Do reset");
+        tryAgainRect.anchoredPosition = new(-2048, tryAgainRect.anchoredPosition.y);
+        tryAgainRect.gameObject.SetActive(true);
+        var text = tryAgainRect.GetComponentInChildren<TMP_Text>();
+        yield return Sequence.Create()
+          .Chain(Tween.UIAnchoredPositionX(tryAgainRect, 0, 1))
+          .Chain(Sequence.Create()
+            .Group(Tween.Scale(tryAgainRect, 0.95f, 0.5f, cycleMode: CycleMode.Yoyo, cycles: 4))
+            .Group(Tween.Custom(0, accuracy, 2, f =>
+            {
+              text.text = $"{Mathf.RoundToInt(f)}%";
+            }, Ease.OutBack))
+           )
+          .Chain(Tween.UIAnchoredPositionX(tryAgainRect, 2048, 1))
+          .OnComplete(() =>
+          {
+            tryAgainRect.gameObject.SetActive(false);
+            text.text = "";
+          })
+          .ToYieldInstruction();
+
         var shape = currentLevel.player.GetComponent<Shape>();
         var endPos = currentLevel.player.transform.position.z;
         var playerOffScreen = currentLevel.player.transform.position.z - 10f;
@@ -81,11 +110,30 @@ public class GameController : MonoBehaviour
       }
       else
       {
-        Debug.Log("Do next level");
         var playerOffScreen = currentLevel.player.transform.position.z + 10f;
+        successRect.anchoredPosition = new(-2048, successRect.anchoredPosition.y);
+        successRect.gameObject.SetActive(true);
+        var text = successRect.GetComponentInChildren<TMP_Text>();
         yield return Sequence.Create()
-          .Chain(Tween.PositionZ(currentLevel.player.transform, playerOffScreen + 20f, 4f))
+          .Group(Tween.PositionZ(currentLevel.player.transform, playerOffScreen + 20f, 4f))
+          .Group(Sequence.Create()
+            .Chain(Tween.UIAnchoredPositionX(successRect, 0, 1))
+            .Chain(Sequence.Create()
+              .Group(Tween.Scale(successRect, 0.95f, 0.5f, cycleMode: CycleMode.Yoyo, cycles: 4))
+              .Group(Tween.Custom(0, accuracy, 2, f =>
+              {
+                text.text = $"{Mathf.RoundToInt(f)}%";
+              }))
+            )
+            .Chain(Tween.UIAnchoredPositionX(successRect, 2048, 1))
+          )
+          .OnComplete(() =>
+          {
+            successRect.gameObject.SetActive(false);
+            text.text = "";
+          })
           .ToYieldInstruction();
+
         currentLevel.player.gameObject.SetActive(false);
       }
     }
@@ -101,7 +149,7 @@ public class GameController : MonoBehaviour
       var targetPos = currentLevel.player.transform.position.z;
       currentLevel.player.transform.position += Vector3.back * 10f;
       currentLevel.player.SetActive(true);
-      
+
       yield return Sequence.Create()
         .Group(Tween.PositionZ(currentLevel.player.transform, targetPos, 2f))
         .Group(wall.AnimateToNext(level))

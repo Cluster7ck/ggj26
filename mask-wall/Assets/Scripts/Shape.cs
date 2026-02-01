@@ -40,8 +40,8 @@ public class Shape : MonoBehaviour
     void Update()
     {
         if (!GameController.Instance.InputAllowed) return;
-
-        if (Input.GetKeyDown(KeyCode.Space) && currentJoinIdx < Joints.Count)
+        
+        if (Input.anyKeyDown && currentJoinIdx < Joints.Count)
         {
             if (_audioSource != null)
             {

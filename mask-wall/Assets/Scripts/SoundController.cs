@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
@@ -20,6 +21,8 @@ public class SoundController : MonoBehaviour
         isMuted = !isMuted;
         var volume = isMuted ? -80f : 0f;
         audioMixerGroup.audioMixer.SetFloat("Volume", volume);
+
+        soundButton.GetComponentInChildren<TMP_Text>().text = isMuted ? "Unmute" : "Mute";
     }
     
 }

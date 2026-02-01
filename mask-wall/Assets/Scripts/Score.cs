@@ -9,7 +9,7 @@ public class Score : MonoBehaviour
 
     [Header("Settings")] [Range(1, 16)] public int downscale = 4; // How much to downscale for faster counting
 
-    private TMP_Text scoreText;
+    public TMP_Text scoreText;
     private Color[] maskPixels;
     private float accuracyPercent = 0f;
 
@@ -18,9 +18,6 @@ public class Score : MonoBehaviour
     private void Start()
     {
         GameController.Instance.OnLevelChange += OnOnLevelChange;
-        //OnOnLevelChange(this, GameController.Instance.CurrentLevel);
-
-        scoreText = GetComponentInChildren<TMP_Text>();
     }
 
     private void OnOnLevelChange(object sender, Level e)

@@ -6,7 +6,15 @@
   <component name="ChangeListManager">
     <list default="true" id="ca99eaeb-bdd5-4d5c-9ecd-217263fa40fb" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.mask-wall/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.mask-wall/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/GameScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/GameScene.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Score.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Score.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Shape.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Shape.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SoundController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SoundController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Textures/ui/success.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Textures/ui/success.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Textures/ui/tryagain.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Textures/ui/tryagain.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/prefabs/Score.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/prefabs/Score.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/prefabs/SoundController.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/prefabs/SoundController.prefab" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
