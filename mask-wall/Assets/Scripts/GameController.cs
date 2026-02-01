@@ -79,9 +79,7 @@ public class GameController : MonoBehaviour
       {
         var playerOffScreen = currentLevel.player.transform.position.z + 10f;
         yield return Sequence.Create()
-          .Chain(Tween.PositionZ(currentLevel.player.transform, playerOffScreen, 3f))
-          .Chain(Tween.ShakeLocalPosition(currentLevel.player.transform, new Vector3(0.4f, 0.4f, 0), 2f))
-          .Chain(Tween.PositionZ(currentLevel.player.transform, playerOffScreen + 20f, 3f))
+          .Chain(Tween.PositionZ(currentLevel.player.transform, playerOffScreen + 20f, 4f))
           .ToYieldInstruction();
         currentLevel.player.gameObject.SetActive(false);
       }

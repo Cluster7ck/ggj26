@@ -83,7 +83,7 @@ public class Wall : MonoBehaviour
     {
       currentSequence = Sequence.Create()
         .Chain(Tween.PositionZ(transform, zSteps[currentStep], rest.remap(0, currentStepSize, 0, 1)))
-        .Chain(Tween.PositionZ(transform, zSteps[currentStep + 1], 10, Ease.OutCirc));
+        .Chain(Tween.PositionZ(transform, zSteps[currentStep + 1], 1f, Ease.OutCirc));
 
       currentStep++;
     }
