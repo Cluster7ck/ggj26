@@ -6,13 +6,17 @@ public class Shape : MonoBehaviour
 {
     public List<Joint> Joints = new();
     public float rotationSpeed;
+
+    private AudioSource _audioSource;
     private int currentJoinIdx = 0;
     private int currentDir = 1;
 
     public event EventHandler<Joint> OnJointLocked;
-    
+
     void Start()
     {
+        _audioSource = GetComponent<AudioSource>();
+
         if (Joints.Count > 0 && currentJoinIdx < Joints.Count)
         {
             Joints[currentJoinIdx].StartRot();
@@ -26,7 +30,7 @@ public class Shape : MonoBehaviour
         {
             t.localRotation = Quaternion.identity;
             var joint = t.GetComponent<Joint>();
-            if(joint) joint.current = 0;
+            if (joint) joint.current = 0;
         }
 
         currentJoinIdx = 0;
@@ -36,9 +40,14 @@ public class Shape : MonoBehaviour
     void Update()
     {
         if (!GameController.Instance.InputAllowed) return;
-        
+
         if (Input.GetKeyDown(KeyCode.Space) && currentJoinIdx < Joints.Count)
         {
+            if (_audioSource != null)
+            {
+                _audioSource.Play();
+            }
+            
             Joints[currentJoinIdx].SpawnEffect();
             OnJointLocked?.Invoke(this, Joints[currentJoinIdx]);
 
@@ -48,7 +57,7 @@ public class Shape : MonoBehaviour
                 Joints[currentJoinIdx].StartRot();
             }
         }
-        
+
         if (Joints.Count > 0 && currentJoinIdx < Joints.Count)
         {
             var joint = Joints[currentJoinIdx];
@@ -59,17 +68,19 @@ public class Shape : MonoBehaviour
             {
                 joint.currentDir = -1 * joint.currentDir;
                 joint.current = joint.constraintLow;
-            } else if (joint.current > joint.constraintHigh)
+            }
+            else if (joint.current > joint.constraintHigh)
             {
                 joint.currentDir = -1 * joint.currentDir;
                 joint.current = joint.constraintHigh;
             }
-            
+
             joint.transform.localRotation = Quaternion.Euler(0, 0, mod(joint.current, 360));
         }
     }
-    
-    public static float mod(float x, float m) {
-        return (x%m + m)%m;
+
+    public static float mod(float x, float m)
+    {
+        return (x % m + m) % m;
     }
 }
