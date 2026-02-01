@@ -15,6 +15,7 @@ public class GameController : MonoBehaviour
 
   public float PlayerZ = -2.32f;
   public bool InputAllowed;
+  public RectTransform titleRect;
   public RectTransform pressAnyKeyRect;
   public RectTransform successRect;
   public RectTransform tryAgainRect;
@@ -38,8 +39,8 @@ public class GameController : MonoBehaviour
     {
       Instance = this;
     }
-
-    startTween = Tween.Scale(pressAnyKeyRect, 0.95f, 1, cycleMode: CycleMode.Yoyo, cycles: -1);
+    
+    startTween = Tween.Scale(titleRect, 0.95f, 1, cycleMode: CycleMode.Yoyo, cycles: -1);
   }
 
   private void Update()
@@ -51,16 +52,31 @@ public class GameController : MonoBehaviour
     
     if (isStarting && Input.anyKeyDown)
     {
-      isStarting = false;
-      pressAnyKeyRect.gameObject.SetActive(false);
-      Tween.UIAnchoredPositionX(pressAnyKeyRect, 2048, 1).OnComplete(() =>
-      {
-        if (levels.Length > 0)
-        {
-          StartCoroutine(SetLevel(levels[0], 0, false));
-        }
-      });
+      StartCoroutine(StartSequence());
     }
+  }
+
+  private IEnumerator StartSequence()
+  {
+    isStarting = false;
+    
+    pressAnyKeyRect.anchoredPosition = new(-3000, pressAnyKeyRect.anchoredPosition.y);
+    pressAnyKeyRect.gameObject.SetActive(true);
+    yield return Sequence.Create()
+      .Chain(Sequence.Create()
+        .Group(Tween.UIAnchoredPositionX(pressAnyKeyRect, 0, 1))
+        .Group(Tween.UIAnchoredPositionX(titleRect, 3000, 1))
+        .OnComplete(() => titleRect.gameObject.SetActive(false))
+      )
+      .Chain(Tween.Scale(pressAnyKeyRect, 0.95f, 0.5f, cycleMode: CycleMode.Yoyo, cycles: 4))
+      .Chain(Tween.UIAnchoredPositionX(pressAnyKeyRect, 3000, 1))
+      .OnComplete(() =>
+      {
+        pressAnyKeyRect.gameObject.SetActive(false);
+      })
+      .ToYieldInstruction();
+
+    yield return SetLevel(levels[0], 0, false);
   }
 
   public void NextLevel()

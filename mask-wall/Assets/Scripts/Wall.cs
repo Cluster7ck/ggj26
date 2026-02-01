@@ -55,11 +55,11 @@ public class Wall : MonoBehaviour
   public Sequence AnimateToNext(Level level)
   {
     return Sequence.Create()
-      .Chain(Tween.PositionZ(this.transform, initialZ + 20f, 2f).OnComplete(() =>
+      .Chain(Tween.PositionZ(this.transform, initialZ + 20f, 1f).OnComplete(() =>
       {
         meshRenderer.material.SetTexture(baseTextureName, level.wallTexture);
       }))
-      .Chain(Tween.PositionZ(this.transform, initialZ, 2f));
+      .Chain(Tween.PositionZ(this.transform, initialZ, 1f));
   }
   
   public Tween AnimateToReset()
