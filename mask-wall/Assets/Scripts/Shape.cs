@@ -19,10 +19,21 @@ public class Shape : MonoBehaviour
         }
     }
 
+    public void Reset()
+    {
+        var transforms = GetComponentsInChildren<Transform>();
+        foreach (var t in transforms)
+        {
+            t.localRotation = Quaternion.identity;
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {
-        if (Input.anyKeyDown && currentJoinIdx < Joints.Count)
+        if (!GameController.Instance.InputAllowed) return;
+        
+        if (Input.GetKeyDown(KeyCode.Space) && currentJoinIdx < Joints.Count)
         {
             Joints[currentJoinIdx].SpawnEffect();
             OnJointLocked?.Invoke(this, Joints[currentJoinIdx]);
@@ -37,7 +48,6 @@ public class Shape : MonoBehaviour
         if (Joints.Count > 0 && currentJoinIdx < Joints.Count)
         {
             var joint = Joints[currentJoinIdx];
-            //joint.transform.Rotate(Vector3.forward, currentDir * 90f * rotationSpeed * Time.deltaTime);
 
             joint.current += joint.currentDir * 90f * rotationSpeed * Time.deltaTime;
 
@@ -51,10 +61,7 @@ public class Shape : MonoBehaviour
                 joint.current = joint.constraintHigh;
             }
             
-            //Debug.Log("current: "+joint.current+ " ,, mod: "+mod(joint.current, 360));
             joint.transform.localRotation = Quaternion.Euler(0, 0, mod(joint.current, 360));
-            
-            //var asd = joint.current.remap(joint.constraintLow, joint.constraintHigh, 0, )
         }
     }
     

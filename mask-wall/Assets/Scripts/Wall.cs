@@ -10,7 +10,7 @@ public class Wall : MonoBehaviour
   private int currentStep = 0;
   private float currentStepSize;
   private Shape currenShape;
-  private Sequence currentSequence; 
+  private Sequence currentSequence;
 
   public MeshRenderer meshRenderer;
 
@@ -23,7 +23,7 @@ public class Wall : MonoBehaviour
   {
     GameController.Instance.OnLevelChange += OnLevelChange;
     // we miss the first event
-    OnLevelChange(this, GameController.Instance.CurrentLevel);
+    //OnLevelChange(this, GameController.Instance.CurrentLevel);
   }
 
   private void OnDestroy()
@@ -33,16 +33,12 @@ public class Wall : MonoBehaviour
 
   private void OnLevelChange(object ev, Level level)
   {
-    meshRenderer.material.SetTexture(baseTextureName, level.wallTexture);
-      
-    //var resetPost = new Vector3(transform.position.x, transform.position.y, initialZ);
-    transform.position = new Vector3(transform.position.x, transform.position.y, initialZ);
-    // TODO animate
-    currentSequence.Stop();
     if (currenShape)
     {
       currenShape.OnJointLocked -= OnJointLocked;
     }
+
+    currentSequence.Stop();
     currenShape = level.player.GetComponent<Shape>();
     currentStep = 0;
     zSteps.Clear();
@@ -52,26 +48,38 @@ public class Wall : MonoBehaviour
     {
       zSteps.Add(initialZ - currentStepSize * i);
     }
+
     OnJointLocked(this, currenShape.Joints[0]);
 
     currenShape.OnJointLocked += OnJointLocked;
   }
 
+  public Sequence AnimateReset(Level level)
+  {
+    return Sequence.Create()
+      .Chain(Tween.PositionZ(this.transform, initialZ + 20f, 2f).OnComplete(() =>
+      {
+        meshRenderer.material.SetTexture(baseTextureName, level.wallTexture);
+      }))
+      .Chain(Tween.PositionZ(this.transform, initialZ, 2f));
+  }
+
   private void OnJointLocked(object ev, Joint joint)
   {
     var rest = transform.position.z - zSteps[currentStep];
-    if (currentStep == zSteps.Count-1)
+    if (currentStep == zSteps.Count - 1)
     {
       // last step?
       currentSequence = Sequence.Create()
-        .Chain(Tween.PositionZ(transform, zSteps[currentStep], rest.remap(0, currentStepSize, 0, 3)));
+        .Chain(Tween.PositionZ(transform, zSteps[currentStep], rest.remap(0, currentStepSize, 0, 3)))
+        .OnComplete(() => { GameController.Instance.NextLevel(); });
     }
     else
     {
       currentSequence = Sequence.Create()
         .Chain(Tween.PositionZ(transform, zSteps[currentStep], rest.remap(0, currentStepSize, 0, 1)))
         .Chain(Tween.PositionZ(transform, zSteps[currentStep + 1], 10, Ease.OutCirc));
-        
+
       currentStep++;
     }
   }
