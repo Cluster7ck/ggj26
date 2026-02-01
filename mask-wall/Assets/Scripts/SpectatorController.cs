@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -39,9 +40,16 @@ public class SpectatorController : MonoBehaviour
         GameController.Instance.Score.OnScoreChanged -= ScoreOnOnScoreChanged;
     }
 
+    private Coroutine coroutine;
+
     private void ScoreOnOnScoreChanged(object sender, int e)
     {
-        ApplyMood(GetMoodFromAccuracy(e));
+        if (coroutine != null)
+        {
+            StopCoroutine(coroutine);
+        }
+
+        coroutine = StartCoroutine(ApplyMoodAsync(GetMoodFromAccuracy(e)));
     }
 
     private Mood GetMoodFromAccuracy(int accuracy)
@@ -57,6 +65,12 @@ public class SpectatorController : MonoBehaviour
         }
 
         return Mood.Wow;
+    }
+
+    IEnumerator ApplyMoodAsync(Mood mood, bool initialGeneration = false)
+    {
+        yield return new WaitForSeconds(Random.Range(0.0f, 1f));
+        ApplyMood(mood, initialGeneration);
     }
 
     private void ApplyMood(Mood mood, bool initialGeneration = false)
