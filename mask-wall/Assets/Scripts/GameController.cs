@@ -109,6 +109,7 @@ public class GameController : MonoBehaviour
     }
 
     OnLevelChange?.Invoke(this, currentLevel);
+    currentLevelIndex++;
     InputAllowed = true;
   }
 
