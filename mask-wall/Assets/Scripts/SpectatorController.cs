@@ -8,7 +8,7 @@ using Vector3 = UnityEngine.Vector3;
 
 public class SpectatorController : MonoBehaviour
 {
-    private enum Mood
+    public enum Mood
     {
         Good,
         Wow,
@@ -34,11 +34,11 @@ public class SpectatorController : MonoBehaviour
 
     private void Awake()
     {
-        transform.Translate(new Vector3(-0.3f + Random.value * 0.6f, 0f,-0.3f  + Random.value * 0.6f));
+        transform.Translate(new Vector3(-0.3f + Random.value * 0.6f, 0f, -0.3f + Random.value * 0.6f));
 
         if (Random.Range(0, 3) > 0)
         {
-           // Destroy(hands.gameObject);
+            //Destroy(hands.gameObject);
         }
     }
 
@@ -54,11 +54,11 @@ public class SpectatorController : MonoBehaviour
 
     void Cheer()
     {
-        if (hands.transform == null)
+        if (hands?.transform == null)
         {
             return;
         }
-        
+
         var random = Random.Range(0, 2);
 
         Tween.ShakeLocalPosition(transform, strength: new Vector3(0, 0.4f), duration: 1 + Random.value * 0.5f,
