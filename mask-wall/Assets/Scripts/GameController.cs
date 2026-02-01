@@ -20,7 +20,7 @@ public class GameController : MonoBehaviour
   private Coroutine currentSetLevelCoro;
 
   public static GameController Instance { get; private set; }
-  
+
   public Shape Shape;
 
   public Score Score;
@@ -70,13 +70,18 @@ public class GameController : MonoBehaviour
     {
       if (reset)
       {
-        var playerOffScreen = currentLevel.player.transform.position.z - 10f;
-        yield return Tween.PositionZ(currentLevel.player.transform, playerOffScreen, 3f).ToYieldInstruction();
+        Debug.Log("Do reset");
         var shape = currentLevel.player.GetComponent<Shape>();
-        shape.Reset();
+        var endPos = currentLevel.player.transform.position.z;
+        var playerOffScreen = currentLevel.player.transform.position.z - 10f;
+        Sequence.Create()
+          .Chain(Tween.PositionZ(currentLevel.player.transform, playerOffScreen, 1.5f)
+            .OnComplete(() => shape.Reset()))
+          .Chain(Tween.PositionZ(currentLevel.player.transform, endPos, 1.5f));
       }
       else
       {
+        Debug.Log("Do next level");
         var playerOffScreen = currentLevel.player.transform.position.z + 10f;
         yield return Sequence.Create()
           .Chain(Tween.PositionZ(currentLevel.player.transform, playerOffScreen + 20f, 4f))
@@ -86,14 +91,22 @@ public class GameController : MonoBehaviour
     }
 
     currentLevel = level;
-    var targetPos = currentLevel.player.transform.position.z;
-    currentLevel.player.transform.position += Vector3.back * 10f;
-    currentLevel.player.SetActive(true);
 
-    yield return Sequence.Create()
-      .Group(Tween.PositionZ(currentLevel.player.transform, targetPos, 2f))
-      .Group(wall.AnimateToNext(level))
-      .ToYieldInstruction();
+    if (reset)
+    {
+      yield return wall.AnimateToReset().ToYieldInstruction();
+    }
+    else
+    {
+      var targetPos = currentLevel.player.transform.position.z;
+      currentLevel.player.transform.position += Vector3.back * 10f;
+      currentLevel.player.SetActive(true);
+      
+      yield return Sequence.Create()
+        .Group(Tween.PositionZ(currentLevel.player.transform, targetPos, 2f))
+        .Group(wall.AnimateToNext(level))
+        .ToYieldInstruction();
+    }
 
     OnLevelChange?.Invoke(this, currentLevel);
     InputAllowed = true;

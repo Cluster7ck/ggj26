@@ -25,7 +25,11 @@ public class Shape : MonoBehaviour
         foreach (var t in transforms)
         {
             t.localRotation = Quaternion.identity;
+            var joint = t.GetComponent<Joint>();
+            if(joint) joint.current = 0;
         }
+
+        currentJoinIdx = 0;
     }
 
     // Update is called once per frame

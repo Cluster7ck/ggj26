@@ -64,9 +64,9 @@ public class Wall : MonoBehaviour
       .Chain(Tween.PositionZ(this.transform, initialZ, 2f));
   }
   
-  public Tween AnimateToReset(Level level)
+  public Tween AnimateToReset()
   {
-    return Tween.PositionZ(this.transform, initialZ, 2f);
+    return Tween.PositionZ(transform, initialZ, 2f);
   }
 
   private void OnJointLocked(object ev, Joint joint)
